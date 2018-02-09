@@ -4,7 +4,9 @@ package org.usfirst.frc.team4015.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* ===================================================
- * This class controls the arm
+ * This class controls the arm.  The arm is raised and
+ * lowered using two CIM motors, each controlled by a 
+ * Talon SRX.
  * =================================================*/
 
 public class Arm extends Subsystem

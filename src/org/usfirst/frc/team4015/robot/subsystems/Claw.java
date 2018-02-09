@@ -6,7 +6,8 @@ import org.usfirst.frc.team4015.robot.subsystems.pneumaticsControl.Piston;
 
 /* ===================================================
  * This class contains the methods/objects required to 
- * control the compressor and piston(s).
+ * control claw.  The claw piston is controlled using a
+ * FESTO double solenoid.
  * =================================================*/
 
 public class Claw extends Subsystem
