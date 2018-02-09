@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * This class contains the methods required to drive 
  * the robot with a mecanum drive chassis.  The drive 
  * method can be configured to drive the robot in tank
- * drive mode as well.
+ * drive mode as well.  The wheels are powered by CIM
+ * motors that are each controlled using a Talon SR.
  * =================================================*/
 
 public class Drivetrain extends Subsystem

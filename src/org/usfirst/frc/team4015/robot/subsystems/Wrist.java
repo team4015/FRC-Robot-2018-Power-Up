@@ -4,7 +4,8 @@ package org.usfirst.frc.team4015.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* ===================================================
- * This class controls the wrist
+ * This class controls the wrist.  The wrist uses a 
+ * windshield wiper motor controlled by a Talon SRX.
  * =================================================*/
 
 public class Wrist extends Subsystem

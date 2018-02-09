@@ -3,7 +3,8 @@ package org.usfirst.frc.team4015.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* ===================================================
- * This is a template class for creating new subsystems.
+ * This class controls the winch.  The winch is 
+ * controlled with two motors, each using a Talon SRX.
  * =================================================*/
 
 public class Winch extends Subsystem
