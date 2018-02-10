@@ -118,7 +118,7 @@ public class Robot extends IterativeRobot
 		
 		//autonomousCommand = chooser.getSelected();
 		
-		String autoSelected = SmartDashboard.getString("Auto Selector", "SpinToWin");
+		String autoSelected = SmartDashboard.getString("Auto Selector", "BaseLine");
 		 
 		 switch (autoSelected)
 		 {
