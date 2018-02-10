@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4015.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.DriverStation;
 
 // SUBSYSTEM IMPORTS //
 
@@ -21,7 +21,8 @@ import org.usfirst.frc.team4015.robot.subsystems.Intake;
 // ROBOT MODES (COMMAND GROUP) IMPORTS //
 
 import org.usfirst.frc.team4015.robot.robotModes.Teleop;
-import org.usfirst.frc.team4015.robot.robotModes.Auto;
+import org.usfirst.frc.team4015.robot.robotModes.auto.*;
+import org.usfirst.frc.team4015.robot.robotModes.auto.position1.*;
 
 /* =============================================================================
  * The RoboRIO will automatically run the methods in this class depending on
@@ -45,7 +46,7 @@ public class Robot extends IterativeRobot
 	Command teleop;
 	Command auto;
 	
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	//SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/* ===================================
 	 * This function is run when the robot 
@@ -72,7 +73,7 @@ public class Robot extends IterativeRobot
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //
 		
 		teleop = new Teleop();
-		auto = new Auto();
+		//auto = new Auto();
 		
 		/*
 		chooser.addDefault("Default Auto", new ExampleCommand());
@@ -116,24 +117,74 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
-		/*
-		autonomousCommand = chooser.getSelected();
+		String plateLocations;
+		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
 		
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		/*
+        if (plateLocations.length() > 0)
+        {
+		  if(plateLocations.charAt(0) == 'L')
+		  {
+			//Put left auto code here
+		  }
+		  else if (plateLocations.charAt(0) == 'R')
+		  {
+			//Put right auto code here
+		  }
+		}
+		*/
+                
+		//autonomousCommand = chooser.getSelected();
+		
+		String autoSelected = SmartDashboard.getString("Auto Selector", "BaseLine");
 		 
 		 switch (autoSelected)
 		 {
-		 	case "My Auto":
-		 		autonomousCommand = new MyAutoCommand();
+		 	case "Switch1":
+		 		
+		 		if (plateLocations.length() > 0)
+		        {
+				  if(plateLocations.charAt(0) == 'L')
+				  {
+					auto = new Switch1L();
+				  }
+				  else if (plateLocations.charAt(0) == 'R')
+				  {
+					auto = new Switch1R();
+				  }
+				}
+		 		
 		 		break;
 		 		
-		 	case "Default Auto":
+		 	case "Scale1":
+		 		
+		 		if (plateLocations.length() > 0)
+		        {
+				  if(plateLocations.charAt(0) == 'L')
+				  {
+					auto = new Scale1L();
+				  }
+				  else if (plateLocations.charAt(0) == 'R')
+				  {
+					auto = new Scale1R();
+				  }
+				}
+		 		
+		 		break;
+		 		
+		 	case "AutoSpinToWin":
+		 		auto = new AutoSpinToWin();
+		 		break;
+		 		
+		 	case "BaseLine":
+		 		auto = new BaseLine();
+		 		break;
 		 		
 		 	default:
-		 		autonomousCommand = new ExampleCommand();
+		 		auto = new BaseLine();
 		 		break;
 		 }
-		 */
+		 
 
 		// START AUTONOMOUS COMMAND GROUP //
 		

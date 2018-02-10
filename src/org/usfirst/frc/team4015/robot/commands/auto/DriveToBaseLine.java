@@ -1,19 +1,17 @@
-package org.usfirst.frc.team4015.robot.commands;
+package org.usfirst.frc.team4015.robot.commands.auto;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4015.robot.OI;
 import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
- * This command drives the robot with one or two 
- * joysticks on a tank drive chassis.  Mecanum to 
- * come soon.....
+ * This command drives the robot in a straight line
+ * to the baseline in the autonomous period.
+ * The compressor will run in preparation for teleop.
  * =================================================*/
 
-public class Drive extends Command
+public class DriveToBaseLine extends Command
 {
-	public Drive()
+	public DriveToBaseLine()
 	{
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain);
@@ -23,20 +21,14 @@ public class Drive extends Command
 	@Override
 	protected void initialize()
 	{
-		
+		Robot.drivetrain.stop();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute()
 	{
-		// DUAL STICK //
-		Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.rightStick.getY()), OI.leftStick.getX());
-		
-		// SINGLE STICK //
-		// Robot.drivetrain.drive(OI.rightStick.getX(), -(1*OI.rightStick.getY()), OI.rightStick.getZ());
-		
-		Timer.delay(0.05);  // motor update time
+		Robot.drivetrain.drive(0, 0.5, 0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
