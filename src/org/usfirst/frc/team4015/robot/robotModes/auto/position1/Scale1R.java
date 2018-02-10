@@ -1,17 +1,18 @@
-package org.usfirst.frc.team4015.robot.robotModes.auto;
+package org.usfirst.frc.team4015.robot.robotModes.auto.position1;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 //import org.usfirst.frc.team4015.robot.commands.?;
 
 /* ===================================================
- * CommandGroup for placing cube in SWITCH from POSITION 1
+ * CommandGroup for placing cube in RIGHT SCALE 
+ * from POSITION 1
  * =================================================*/
 
-public class Switch1 extends CommandGroup
+public class Scale1R extends CommandGroup
 {
 	// CONSTRUCTOR //
 	
-	public  Switch1()
+	public  Scale1R()
 	{
 		
 		//addSequential(new ?());

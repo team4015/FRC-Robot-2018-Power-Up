@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 
 // SUBSYSTEM IMPORTS //
 
@@ -21,6 +22,7 @@ import org.usfirst.frc.team4015.robot.subsystems.Intake;
 
 import org.usfirst.frc.team4015.robot.robotModes.Teleop;
 import org.usfirst.frc.team4015.robot.robotModes.auto.*;
+import org.usfirst.frc.team4015.robot.robotModes.auto.position1.*;
 
 /* =============================================================================
  * The RoboRIO will automatically run the methods in this class depending on
@@ -115,7 +117,23 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
+		String plateLocations;
+		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
 		
+		/*
+        if (plateLocations.length() > 0)
+        {
+		  if(plateLocations.charAt(0) == 'L')
+		  {
+			//Put left auto code here
+		  }
+		  else if (plateLocations.charAt(0) == 'R')
+		  {
+			//Put right auto code here
+		  }
+		}
+		*/
+                
 		//autonomousCommand = chooser.getSelected();
 		
 		String autoSelected = SmartDashboard.getString("Auto Selector", "BaseLine");
@@ -123,11 +141,35 @@ public class Robot extends IterativeRobot
 		 switch (autoSelected)
 		 {
 		 	case "Switch1":
-		 		auto = new Switch1();
+		 		
+		 		if (plateLocations.length() > 0)
+		        {
+				  if(plateLocations.charAt(0) == 'L')
+				  {
+					auto = new Switch1L();
+				  }
+				  else if (plateLocations.charAt(0) == 'R')
+				  {
+					auto = new Switch1R();
+				  }
+				}
+		 		
 		 		break;
 		 		
 		 	case "Scale1":
-		 		auto = new Scale1();
+		 		
+		 		if (plateLocations.length() > 0)
+		        {
+				  if(plateLocations.charAt(0) == 'L')
+				  {
+					auto = new Scale1L();
+				  }
+				  else if (plateLocations.charAt(0) == 'R')
+				  {
+					auto = new Scale1R();
+				  }
+				}
+		 		
 		 		break;
 		 		
 		 	case "AutoSpinToWin":
