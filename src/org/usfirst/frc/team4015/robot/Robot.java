@@ -4,9 +4,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4015.robot.commands.ExampleCommand;
 
 // SUBSYSTEM IMPORTS //
 
@@ -21,7 +20,7 @@ import org.usfirst.frc.team4015.robot.subsystems.Intake;
 // ROBOT MODES (COMMAND GROUP) IMPORTS //
 
 import org.usfirst.frc.team4015.robot.robotModes.Teleop;
-import org.usfirst.frc.team4015.robot.robotModes.Auto;
+import org.usfirst.frc.team4015.robot.robotModes.auto.*;
 
 /* =============================================================================
  * The RoboRIO will automatically run the methods in this class depending on
@@ -45,7 +44,7 @@ public class Robot extends IterativeRobot
 	Command teleop;
 	Command auto;
 	
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	//SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/* ===================================
 	 * This function is run when the robot 
@@ -72,7 +71,7 @@ public class Robot extends IterativeRobot
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //
 		
 		teleop = new Teleop();
-		auto = new Auto();
+		//auto = new Auto();
 		
 		/*
 		chooser.addDefault("Default Auto", new ExampleCommand());
@@ -116,24 +115,30 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
-		/*
-		autonomousCommand = chooser.getSelected();
 		
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		//autonomousCommand = chooser.getSelected();
+		
+		String autoSelected = SmartDashboard.getString("Auto Selector", "SpinToWin");
 		 
 		 switch (autoSelected)
 		 {
-		 	case "My Auto":
-		 		autonomousCommand = new MyAutoCommand();
+		 	case "Switch1":
+		 		auto = new Switch1();
 		 		break;
 		 		
-		 	case "Default Auto":
+		 	case "Scale1":
+		 		auto = new Scale1();
+		 		break;
+		 		
+		 	case "AutoSpinToWin":
+		 		auto = new AutoSpinToWin();
+		 		break;
 		 		
 		 	default:
-		 		autonomousCommand = new ExampleCommand();
+		 		auto = new AutoSpinToWin();
 		 		break;
 		 }
-		 */
+		 
 
 		// START AUTONOMOUS COMMAND GROUP //
 		

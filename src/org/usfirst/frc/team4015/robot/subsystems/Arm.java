@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem
 {
 	// Talons here - make one object to control both sides
+	// use PWMTalonSRX class
 	
 	public Arm()
 	{
