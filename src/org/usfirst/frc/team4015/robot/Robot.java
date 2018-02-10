@@ -135,7 +135,7 @@ public class Robot extends IterativeRobot
 		 		break;
 		 		
 		 	default:
-		 		auto = new AutoSpinToWin();
+		 		auto = new BaseLine();
 		 		break;
 		 }
 		 
