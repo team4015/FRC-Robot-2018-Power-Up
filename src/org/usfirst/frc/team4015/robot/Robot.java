@@ -22,7 +22,6 @@ import org.usfirst.frc.team4015.robot.subsystems.Intake;
 
 import org.usfirst.frc.team4015.robot.robotModes.Teleop;
 import org.usfirst.frc.team4015.robot.robotModes.auto.*;
-import org.usfirst.frc.team4015.robot.robotModes.auto.position1.*;
 
 /* =============================================================================
  * The RoboRIO will automatically run the methods in this class depending on
@@ -119,26 +118,109 @@ public class Robot extends IterativeRobot
 	{
 		String plateLocations;
 		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
-		
-		/*
-        if (plateLocations.length() > 0)
-        {
-		  if(plateLocations.charAt(0) == 'L')
-		  {
-			//Put left auto code here
-		  }
-		  else if (plateLocations.charAt(0) == 'R')
-		  {
-			//Put right auto code here
-		  }
-		}
-		*/
                 
 		//autonomousCommand = chooser.getSelected();
 		
-		String autoSelected = SmartDashboard.getString("Auto Selector", "BaseLine");
-		 
-		 switch (autoSelected)
+		String selectedAuto = SmartDashboard.getString("Auto Selector", "BaseLine");
+		
+		if (selectedAuto.substring(0, selectedAuto.length()).equalsIgnoreCase("Switch"))
+		{
+			if (plateLocations.length() > 0)
+			{
+				if (plateLocations.charAt(0) == 'L')
+				{
+					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+					{
+						auto = new Switch(1, 'L');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
+					{
+						auto = new Switch(2, 'L');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
+					{
+						auto = new Switch(3, 'L');
+					}
+				}
+				else if (plateLocations.charAt(0) == 'R')
+				{
+					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+					{
+						auto = new Switch(1, 'R');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
+					{
+						auto = new Switch(2, 'R');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
+					{
+						auto = new Switch(3, 'R');
+					}
+				}
+			}
+		}
+		else if (selectedAuto.substring(0, selectedAuto.length()).equalsIgnoreCase("Scale"))
+		{
+			if (plateLocations.length() > 0)
+			{
+				if (plateLocations.charAt(1) == 'L')
+				{
+					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+					{
+						auto = new Switch(1, 'L');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
+					{
+						auto = new Switch(2, 'L');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
+					{
+						auto = new Switch(3, 'L');
+					}
+				}
+				else if (plateLocations.charAt(1) == 'R')
+				{
+					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+					{
+						auto = new Switch(1, 'R');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
+					{
+						auto = new Switch(2, 'R');
+					}
+					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
+					{
+						auto = new Switch(3, 'R');
+					}
+				}
+			}
+		}
+		else if (selectedAuto.substring(0, selectedAuto.length()).equalsIgnoreCase("BaseLine"))
+		{
+			if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+			{
+				auto = new BaseLine(1);
+			}
+			else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
+			{
+				auto = new BaseLine(2);
+			}
+			else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
+			{
+				auto = new BaseLine(3);
+			}
+		}
+		else if (selectedAuto.substring(0, selectedAuto.length() + 1).equalsIgnoreCase("SpinToWin"))
+		{
+			auto = new AutoSpinToWin();
+		}
+		else
+		{
+			auto = new AutoSpinToWin();
+		}
+		
+		/*
+		 switch (selectedAuto)
 		 {
 		 	case "Switch1":
 		 		
@@ -146,11 +228,11 @@ public class Robot extends IterativeRobot
 		        {
 				  if(plateLocations.charAt(0) == 'L')
 				  {
-					auto = new Switch1L();
+					auto = new Switch1('L');
 				  }
 				  else if (plateLocations.charAt(0) == 'R')
 				  {
-					auto = new Switch1R();
+					auto = new Switch1('R');
 				  }
 				}
 		 		
@@ -160,13 +242,13 @@ public class Robot extends IterativeRobot
 		 		
 		 		if (plateLocations.length() > 0)
 		        {
-				  if(plateLocations.charAt(0) == 'L')
+				  if(plateLocations.charAt(1) == 'L')
 				  {
-					auto = new Scale1L();
+					auto = new Scale1('L');
 				  }
-				  else if (plateLocations.charAt(0) == 'R')
+				  else if (plateLocations.charAt(1) == 'R')
 				  {
-					auto = new Scale1R();
+					auto = new Scale1('R');
 				  }
 				}
 		 		
@@ -176,16 +258,24 @@ public class Robot extends IterativeRobot
 		 		auto = new AutoSpinToWin();
 		 		break;
 		 		
-		 	case "BaseLine":
-		 		auto = new BaseLine();
+		 	case "BaseLine1":
+		 		auto = new BaseLine(1);
+		 		break;
+		 		
+		 	case "BaseLine2":
+		 		auto = new BaseLine(2);
+		 		break;
+		 		
+		 	case "BaseLine3":
+		 		auto = new BaseLine(3);
 		 		break;
 		 		
 		 	default:
-		 		auto = new BaseLine();
+		 		auto = new BaseLine(0);
 		 		break;
 		 }
+		 */
 		 
-
 		// START AUTONOMOUS COMMAND GROUP //
 		
 		if (auto != null)
