@@ -12,9 +12,9 @@ public class BaseLine extends CommandGroup
 {
 	// CONSTRUCTOR //
 	
-	public  BaseLine()
+	public  BaseLine(int position)
 	{	
-		addSequential(new DriveToBaseLine());
+		addSequential(new DriveToBaseLine(position));
     }
 	
 }

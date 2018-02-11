@@ -11,10 +11,14 @@ import org.usfirst.frc.team4015.robot.Robot;
 
 public class DriveToBaseLine extends Command
 {
-	public DriveToBaseLine()
+	public int position;
+	
+	public DriveToBaseLine(int position)
 	{
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain);
+		
+		this.position = position;
 	}
 
 	// Called just before this Command runs the first time
@@ -28,7 +32,22 @@ public class DriveToBaseLine extends Command
 	@Override
 	protected void execute()
 	{
-		Robot.drivetrain.drive(0, 0.5, 0);
+		if (position == 1)
+		{
+			
+		}
+		else if (position == 2)
+		{
+			
+		}
+		else if (position == 3)
+		{
+			
+		}
+		else if (position == 0)
+		{
+			Robot.drivetrain.stop();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

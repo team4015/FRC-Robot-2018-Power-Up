@@ -1,24 +1,22 @@
-package org.usfirst.frc.team4015.robot.robotModes.auto.position1;
+package org.usfirst.frc.team4015.robot.robotModes.auto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 //import org.usfirst.frc.team4015.robot.commands.?;
 
 /* ===================================================
- * CommandGroup for placing cube in RIGHT SCALE 
- * from POSITION 1
+ * CommandGroup for placing cube in SCALE
  * =================================================*/
 
-public class Scale1R extends CommandGroup
+public class Scale extends CommandGroup
 {
 	// CONSTRUCTOR //
 	
-	public  Scale1R()
+	public  Scale(int position, char side)
 	{
 		
-		//addSequential(new ?());
+		//addSequential(new ?(position, side));
 		
 		
     }
 	
 }
-
