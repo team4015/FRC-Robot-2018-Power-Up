@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4015.robot;
 
+import org.usfirst.frc.team4015.robot.RobotMap;
+
 /* =============================================================================
  * This class stores the port numbers that the robot hardware is attached to.
  * ============================================================================*/
@@ -26,11 +28,11 @@ public class RobotMap
 	
 	// WINCH //
 	
-	// public static final int winchMotor = ;
+	 public static final int winchMotor = 6;
 	
 	// ARM //
 	
-	// public static final int armMotors = ;
+	 public static final int armMotors = 5;
 	
 	// INTAKE //
 	
@@ -38,6 +40,6 @@ public class RobotMap
 	
 	// WRIST //
 	
-	// public static final int wristMotors = ;
+	 public static final int wristMotors = 4;
 	
 }

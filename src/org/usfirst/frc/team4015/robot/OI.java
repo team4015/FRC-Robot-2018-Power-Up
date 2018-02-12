@@ -37,6 +37,15 @@ public class OI
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
+	/* left stick buttons:
+	 * 		5 - winch up
+	 * 		4 - claw toggle
+	 * right stick buttons:
+	 * 		1 - wrist up
+	 * 		2 - arm down
+	 * 		3 - arm up
+	 * 		4 - arm down
+	 */
 	public static Joystick leftStick = new Joystick(RobotMap.leftStickPort);
 	public static Joystick rightStick = new Joystick(RobotMap.rightStickPort);
 	public static Joystick gamepad = new Joystick(RobotMap.gamepadPort);
