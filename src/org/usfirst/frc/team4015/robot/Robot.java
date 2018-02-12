@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 
+
 // SUBSYSTEM IMPORTS //
 
 import org.usfirst.frc.team4015.robot.subsystems.Drivetrain;
@@ -39,7 +40,7 @@ public class Robot extends IterativeRobot
 	public static Wrist wrist;
 	public static Winch winch;
 	public static Intake intake;
-	
+
 	// DECLARE ROBOT MODES (COMMAND GROUPS) //
 	
 	Command teleop;
@@ -72,6 +73,8 @@ public class Robot extends IterativeRobot
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //
 		
 		teleop = new Teleop();
+
+		
 		//auto = new Auto();
 		
 		/*
