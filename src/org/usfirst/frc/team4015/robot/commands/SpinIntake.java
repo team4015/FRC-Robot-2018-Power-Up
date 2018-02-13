@@ -12,7 +12,7 @@ public class SpinIntake extends Command
 	public SpinIntake()
 	{
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.intake);
+		//requires(Robot.intake);
 	}
 
 	// Called just before this Command runs the first time

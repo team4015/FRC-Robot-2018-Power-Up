@@ -1,10 +1,10 @@
 package org.usfirst.frc.team4015.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4015.robot.subsystems.Wrist;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4015.robot.OI;
+import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
  * This command allows for control of the wrist.
@@ -12,15 +12,12 @@ import org.usfirst.frc.team4015.robot.OI;
 
 public class MoveWrist extends Command
 {
-	Wrist motor;
 	DigitalInput topSwitch;
 	DigitalInput bottomSwitch;
 	
 	public MoveWrist()
 	{
-		// Use requires() here to declare subsystem dependencies
-		
-		motor=new Wrist();
+		requires(Robot.winch);
 		topSwitch = new DigitalInput(1);
 		bottomSwitch = new DigitalInput(2);
 	}
@@ -32,36 +29,23 @@ public class MoveWrist extends Command
 
 	}
 	
-	// move the wrist up
-	protected void moveUp(){
-		motor.up();
-	}
-	
-	// move wrist down
-	protected void moveDown(){
-		motor.down();
-	}
-	 //stop wrist
-	protected void stop(){
-		motor.stop();
-	}
-	
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute()
 	{
 		if (OI.rightStick.getRawButtonPressed(1)){
-			moveUp();
+			Robot.wrist.moveUp();
 		}
 		else if(OI.rightStick.getRawButtonPressed(2)){
-			moveDown();
+			Robot.wrist.moveDown();
 		}
 		
 		if (!((topSwitch.get() && OI.rightStick.getRawButtonPressed(1))||(bottomSwitch.get() && OI.rightStick.getRawButtonPressed(2)))) {
 			Timer.delay(2);
 		}
-		else{
-			stop();
+		else
+		{
+			Robot.wrist.stop();
 			Timer.delay(2);
 		}
 	}
@@ -85,6 +69,6 @@ public class MoveWrist extends Command
 	@Override
 	protected void interrupted()
 	{
-		
+		Robot.wrist.stop();
 	}
 }

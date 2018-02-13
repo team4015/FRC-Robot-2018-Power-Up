@@ -77,8 +77,8 @@ public class Autonomous extends Command {
 				
 				if (!safety) {
 				
-					Robot.drivetrain.tankDrive(1, 0);
-					Timer.delay(0.01);
+					Robot.drivetrain.drive(1, 0, 0);
+					Timer.delay(0.05);
 				
 				}
 			
@@ -100,8 +100,8 @@ public class Autonomous extends Command {
 				
 				if (!safety) {
 				
-					Robot.drivetrain.tankDrive(0, 1);
-					Timer.delay(0.01);
+					Robot.drivetrain.drive(0, 0, 1);
+					Timer.delay(0.05);
 				
 				}
 			
@@ -124,8 +124,8 @@ public class Autonomous extends Command {
 				
 				if (!safety) {
 				
-					Robot.drivetrain.tankDrive(0, -1);
-					Timer.delay(0.01);
+					Robot.drivetrain.drive(0, 0, -1);
+					Timer.delay(0.05);
 				
 				}
 			
@@ -167,11 +167,11 @@ public class Autonomous extends Command {
 					Move(7, 0);
 					
 					if (behavior == 1) {
-						// TODO Use Mechanum drive to move 10ft left
+						// TODO Use Mecanum drive to move 10ft left
 					}
 					
 					if (behavior == 2) {
-						// TODO Use Mechanum drive to move 6ft right
+						// TODO Use Mecanum drive to move 6ft right
 					}
 					
 					Move(5.5, 0);
@@ -194,15 +194,15 @@ public class Autonomous extends Command {
 						
 						if (behavior == 0 || behavior == 1) {
 							
-							Robot.drivetrain.tankDrive(0, 1); //Turn full speed clockwise
-							Timer.delay(0.01);
+							Robot.drivetrain.drive(0, 0, 1); //Turn full speed clockwise
+							Timer.delay(0.05);
 							
 						}
 						
 						if (behavior == 2 || behavior == 3) {
 							
-							Robot.drivetrain.tankDrive(0, -1); //Turn full speed counterclockwise
-							Timer.delay(0.01);
+							Robot.drivetrain.drive(0, 0, -1); //Turn full speed counterclockwise
+							Timer.delay(0.05);
 							
 						}
 						

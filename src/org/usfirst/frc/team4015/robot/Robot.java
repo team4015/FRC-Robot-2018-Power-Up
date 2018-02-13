@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot
 	public static Arm arm;
 	public static Wrist wrist;
 	public static Winch winch;
-	public static Intake intake;
+	//public static Intake intake;
 
 	// DECLARE ROBOT MODES (COMMAND GROUPS) //
 	
@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot
 		arm = new Arm();
 		wrist = new Wrist();
 		winch = new Winch();
-		intake = new Intake();
+		//intake = new Intake();
 		
 		
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //

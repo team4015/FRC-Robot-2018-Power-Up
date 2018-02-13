@@ -14,7 +14,7 @@ public class RobotMap
 	public static final int rightStickPort = 1;
 	public static final int gamepadPort = 2;
 	
-	// MECANUM CONFIG //
+	// MECANUM TALON CHANNELS //
 	
 	public static final int frontLeftMotor = 0;
 	public static final int backLeftMotor = 1;
@@ -34,12 +34,12 @@ public class RobotMap
 	
 	 public static final int armMotors = 5;
 	
-	// INTAKE //
-	
-	// public static final int intakeMotors = ;
-	
 	// WRIST //
 	
 	 public static final int wristMotor = 4;
+	 
+	 // INTAKE //
+	
+	// public static final int intakeMotors = ;
 	
 }

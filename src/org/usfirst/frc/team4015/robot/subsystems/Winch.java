@@ -2,7 +2,7 @@ package org.usfirst.frc.team4015.robot.subsystems;
 
 import org.usfirst.frc.team4015.robot.RobotMap;
 
-
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* ===================================================
@@ -12,24 +12,25 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Winch extends Subsystem
 {
+	PWMTalonSRX winchMotors;
 	
 	public Winch()
 	{
-		
+		winchMotors = new PWMTalonSRX(RobotMap.winchMotors);
 	}
 	
 	// SPIN WINCH TO CLIMB UP //
 	
 	public void spin()
 	{
-		
+		winchMotors.set(1.0);
 	}
 	
 	// STOP WINCH //
 	
 	public void stop()
 	{
-		
+		winchMotors.set(0);
 	}
 
 	public void initDefaultCommand()
