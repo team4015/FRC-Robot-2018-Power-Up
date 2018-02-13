@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4015.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4015.robot.OI;
 import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
@@ -12,7 +14,6 @@ public class Climb extends Command
 {
 	public Climb()
 	{
-		// Use requires() here to declare subsystem dependencies
 		requires(Robot.winch);
 	}
 
@@ -27,7 +28,14 @@ public class Climb extends Command
 	@Override
 	protected void execute()
 	{
-		
+		if (OI.leftStick.getRawButton(5))
+		{
+			Robot.winch.spin();
+		}
+		else
+		{
+			Robot.winch.stop();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -49,6 +57,6 @@ public class Climb extends Command
 	@Override
 	protected void interrupted()
 	{
-		
+		Robot.winch.stop();
 	}
 }
