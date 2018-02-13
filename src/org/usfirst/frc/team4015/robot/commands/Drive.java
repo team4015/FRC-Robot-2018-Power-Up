@@ -7,8 +7,7 @@ import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
  * This command drives the robot with one or two 
- * joysticks on a tank drive chassis.  Mecanum to 
- * come soon.....
+ * joysticks on a mecanum chassis;
  * =================================================*/
 
 public class Drive extends Command

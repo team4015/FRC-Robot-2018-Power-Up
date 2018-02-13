@@ -2,6 +2,7 @@ package org.usfirst.frc.team4015.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
+import org.usfirst.frc.team4015.robot.OI;
 
 /* ===================================================
  * This command allows for control of the wrist.
@@ -26,7 +27,18 @@ public class MoveWrist extends Command
 	@Override
 	protected void execute()
 	{
-		
+		if (OI.rightStick.getRawButton(4) == true)
+		{
+			Robot.wrist.up();
+		}
+		else if (OI.rightStick.getRawButton(5) == true)
+		{
+			Robot.wrist.down();
+		}
+		else
+		{
+			Robot.wrist.stop();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
