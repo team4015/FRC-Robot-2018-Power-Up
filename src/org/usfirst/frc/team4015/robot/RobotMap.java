@@ -28,7 +28,7 @@ public class RobotMap
 	
 	// WINCH //
 	
-	 public static final int winchMotor = 6;
+	 public static final int winchMotors = 6;
 	
 	// ARM //
 	
@@ -40,6 +40,6 @@ public class RobotMap
 	
 	// WRIST //
 	
-	 public static final int wristMotors = 4;
+	 public static final int wristMotor = 4;
 	
 }
