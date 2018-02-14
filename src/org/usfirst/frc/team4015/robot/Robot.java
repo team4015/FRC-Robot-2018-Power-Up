@@ -17,7 +17,7 @@ import org.usfirst.frc.team4015.robot.subsystems.Claw;
 import org.usfirst.frc.team4015.robot.subsystems.Arm;
 import org.usfirst.frc.team4015.robot.subsystems.Wrist;
 import org.usfirst.frc.team4015.robot.subsystems.Winch;
-import org.usfirst.frc.team4015.robot.subsystems.Intake;
+//import org.usfirst.frc.team4015.robot.subsystems.Intake;
 
 // ROBOT MODES (COMMAND GROUP) IMPORTS //
 
