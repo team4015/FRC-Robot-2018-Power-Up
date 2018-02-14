@@ -27,10 +27,8 @@ public class Teleop extends CommandGroup
     	addParallel(new MoveClaw());
     	addParallel(new MoveArm());
     	addParallel(new MoveWrist());
-    	addParallel(new SpinIntake());
+    	//addParallel(new SpinIntake());
     	addParallel(new Climb());
-    	
-    	// Uncomment for manual compressor control
     	addParallel(new ToggleCompressor());
     }
 	

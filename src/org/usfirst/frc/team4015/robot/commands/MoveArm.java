@@ -31,22 +31,34 @@ public class MoveArm extends Command
 	protected void execute()
 	{
 		// MOVE ARM UP //
-		while(OI.rightStick.getRawButton(3)){
+		System.out.println(OI.rightStick.getRawButton(3));
+		
+		if (OI.rightStick.getRawButton(3))
+		{
 			p.retract();
-			Timer.delay(2);
+			//Timer.delay(0.05);
 			Robot.arm.up();
 		}
+		else
+		{
 		Robot.arm.stop(); 
-		p.extend();    // stop arm from falling
+		p.extend();
+		}
 		
 		// MOVE ARM UP //
-		while(OI.rightStick.getRawButton(4)){
+		System.out.println(OI.rightStick.getRawButton(4));
+		
+		if(OI.rightStick.getRawButton(4))
+		{
 			p.retract();
-			Timer.delay(2);
+			//Timer.delay(0.05);
 			Robot.arm.down();
 		}
+		else
+		{
 		Robot.arm.stop();
-		p.extend();    // stop arm from falling
+		p.extend();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 
 import org.usfirst.frc.team4015.robot.RobotMap;
-import org.usfirst.frc.team4015.robot.commands.MoveWrist;
-
 
 /* ===================================================
  * This class controls the wrist.  The wrist uses a 
@@ -45,6 +43,6 @@ public class Wrist extends Subsystem
 	public void initDefaultCommand()
 	{
 		// Set the default command for a subsystem here.
-		 setDefaultCommand(new MoveWrist());
+		// setDefaultCommand(new MoveWrist());
 	}
 }

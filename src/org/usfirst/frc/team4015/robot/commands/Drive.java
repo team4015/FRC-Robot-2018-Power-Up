@@ -7,8 +7,7 @@ import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
  * This command drives the robot with one or two 
- * joysticks on a tank drive chassis.  Mecanum to 
- * come soon.....
+ * joysticks on a mecanum chassis.
  * =================================================*/
 
 public class Drive extends Command
@@ -31,10 +30,10 @@ public class Drive extends Command
 	protected void execute()
 	{
 		// DUAL STICK //
-		Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.rightStick.getY()), OI.leftStick.getX());
+		// Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.rightStick.getY()), OI.leftStick.getX());
 		
 		// SINGLE STICK //
-		// Robot.drivetrain.drive(OI.rightStick.getX(), -(1*OI.rightStick.getY()), OI.rightStick.getZ());
+		Robot.drivetrain.drive(OI.rightStick.getX(), -(1*OI.rightStick.getY()), OI.rightStick.getZ());
 		
 		Timer.delay(0.05);  // motor update time
 	}
