@@ -5,10 +5,19 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DropBox extends Command {
+	private int loc;//-1=switch   1=scale
+	public DropBox(int loc) {
+		this.loc=loc;
+	}
 	@Override
 	protected void execute() {
 		Robot.arm.up();
-		Timer.delay(0);//TODO: ROBOGT ARM UP TIME
+		if(loc==-1) {
+		Timer.delay(0);//TODO: ROBOGT ARM UP TIME to switch
+		}
+		else if(loc==1) {
+			Timer.delay(0);//TODO: ROBOT ARM UP TIME TO SCALE
+		}
 		Robot.arm.stop();
 		Robot.drivetrain.drive(0, 0.5, 0);
 		while(Robot.bottomSwitch.get()) {

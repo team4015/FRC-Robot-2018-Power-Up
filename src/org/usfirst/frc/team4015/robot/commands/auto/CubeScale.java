@@ -1,21 +1,18 @@
-package org.usfirst.frc.team4015.robot.commands;
+package org.usfirst.frc.team4015.robot.commands.auto;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4015.robot.OI;
 import org.usfirst.frc.team4015.robot.Robot;
 
 /* ===================================================
- * This command drives the robot with one or two 
- * joysticks on a mecanum chassis.
+ * This is a template class for creating a new Command
  * =================================================*/
 
-public class Drive extends Command
+public class CubeScale extends Command
 {
-	public Drive()
+	public CubeScale()
 	{
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.drivetrain);
+		//requires(Robot.exampleSubsystem);
 	}
 
 	// Called just before this Command runs the first time
@@ -29,13 +26,7 @@ public class Drive extends Command
 	@Override
 	protected void execute()
 	{
-		// DUAL STICK //
-		 Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.leftStick.getY()), OI.rightStick.getZ());
 		
-		// SINGLE STICK //
-		//Robot.drivetrain.drive(OI.rightStick.getX(), -(1*OI.rightStick.getY()), OI.rightStick.getZ());
-		
-		Timer.delay(0.05);  // motor update time
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -49,7 +40,7 @@ public class Drive extends Command
 	@Override
 	protected void end()
 	{
-		Robot.drivetrain.stop();
+		
 	}
 
 	// Called when another command which requires one or more of the same
@@ -57,6 +48,7 @@ public class Drive extends Command
 	@Override
 	protected void interrupted()
 	{
-		Robot.drivetrain.stop();
+		
 	}
 }
+
