@@ -52,7 +52,7 @@ public class DriveToScale extends Command
 
 			}
 		}
-		else if (side == 'L')
+		else if (side == 'R')
 		{
 			if (position == 1)
 			{
