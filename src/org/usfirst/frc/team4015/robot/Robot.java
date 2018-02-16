@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 
 
@@ -16,6 +17,7 @@ import org.usfirst.frc.team4015.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4015.robot.subsystems.Claw;
 import org.usfirst.frc.team4015.robot.subsystems.Arm;
 import org.usfirst.frc.team4015.robot.subsystems.Wrist;
+import org.usfirst.frc.team4015.robot.subsystems.pneumaticsControl.Piston;
 import org.usfirst.frc.team4015.robot.subsystems.Winch;
 //import org.usfirst.frc.team4015.robot.subsystems.Intake;
 
@@ -39,6 +41,9 @@ public class Robot extends IterativeRobot
 	public static Arm arm;
 	public static Wrist wrist;
 	public static Winch winch;
+	public static Piston p;
+	public static DigitalInput topSwitch;
+	public static DigitalInput bottomSwitch;
 	//public static Intake intake;
 
 	// DECLARE ROBOT MODES (COMMAND GROUPS) //
@@ -58,7 +63,9 @@ public class Robot extends IterativeRobot
 	public void robotInit()
 	{
 		// SUBSYSTEM INSTANTIATION //
-		
+		topSwitch = new DigitalInput(1);
+		bottomSwitch = new DigitalInput(2);
+		p = new Piston(1,2);
 		drivetrain = new Drivetrain();
 		drivetrain.newMecanumDrive();
 		

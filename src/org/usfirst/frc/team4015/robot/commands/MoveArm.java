@@ -12,11 +12,11 @@ import org.usfirst.frc.team4015.robot.subsystems.pneumaticsControl.Piston;
 
 public class MoveArm extends Command
 {
-	Piston p;
+
 	public MoveArm()
 	{
 		requires(Robot.arm);
-		p = new Piston(1,2);
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -35,14 +35,14 @@ public class MoveArm extends Command
 		
 		if (OI.rightStick.getRawButton(3))
 		{
-			p.retract();
+			Robot.p.retract();
 			//Timer.delay(0.05);
 			Robot.arm.up();
 		}
 		else
 		{
 		Robot.arm.stop(); 
-		p.extend();
+		Robot.p.extend();
 		}
 		
 		// MOVE ARM UP //
@@ -50,14 +50,14 @@ public class MoveArm extends Command
 		
 		if(OI.rightStick.getRawButton(4))
 		{
-			p.retract();
+			Robot.p.retract();
 			//Timer.delay(0.05);
 			Robot.arm.down();
 		}
 		else
 		{
 		Robot.arm.stop();
-		p.extend();
+		Robot.p.extend();
 		}
 	}
 
@@ -81,6 +81,6 @@ public class MoveArm extends Command
 	protected void interrupted()
 	{
 		Robot.arm.stop();
-		p.extend();
+		Robot.p.extend();
 	}
 }

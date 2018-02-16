@@ -2,7 +2,7 @@ package org.usfirst.frc.team4015.robot.commands.auto;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
-
+import edu.wpi.first.wpilibj.Timer;
 /* ===================================================
  * This command drives the robot in a straight line
  * to the baseline in the autonomous period.
@@ -32,7 +32,7 @@ public class DriveToBaseLine extends Command
 	@Override
 	protected void execute()
 	{
-		if (position == 1)
+		/*if (position == 1)
 		{
 			
 		}
@@ -43,11 +43,15 @@ public class DriveToBaseLine extends Command
 		else if (position == 3)
 		{
 			
-		}
+		} 
 		else if (position == 0)
-		{
+		{ 
 			Robot.drivetrain.stop();
-		}
+		}*/
+		Robot.drivetrain.drive(0, 1, 0);
+		int seconds=0;//TODO: FILL IN SECoNdS
+		Timer.delay(seconds);
+		Robot.drivetrain.stop();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
