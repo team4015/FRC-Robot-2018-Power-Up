@@ -14,10 +14,13 @@ public class BaseLine extends CommandGroup
 	// CONSTRUCTOR //
 	
 	public  BaseLine(int position)
-	{	if(position==1||position==3){
+	{
+		if (position==1||position==3)
+		{
 			addSequential(new DriveToBaseLine(position));
-		}	
-		else{
+		}
+		else
+		{
 			addSequential(new GetOutOfJail());
 		}
     }

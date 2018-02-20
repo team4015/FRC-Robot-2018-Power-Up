@@ -23,7 +23,7 @@ public class DropBox extends Command {
 		}
 		Robot.arm.stop();
 		//Robot.drivetrain.drive(0, 0.5, 0);
-		while(!Robot.bottomSwitch.get()) {
+		while(!Robot.wrist.getBottomSwitch()) {
 			Robot.wrist.down();
 		}
 		Robot.wrist.stop();
