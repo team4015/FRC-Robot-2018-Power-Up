@@ -1,94 +1,51 @@
 package org.usfirst.frc.team4015.robot.commands.auto;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
 
-/* ===================================================
- * This is a template class for creating a new Command
- * =================================================*/
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveToScale extends Command
-{
-	int position;
+public class DriveToScale extends Command {
 	char side;
-	
-	public DriveToScale(int position, char side)
-	{
-		// Use requires() here to declare subsystem dependencies
-		//requires(Robot.exampleSubsystem);
-		this.position = position;
-		this.side = side;
+	int position;
+	boolean finish;
+	public DriveToScale(int position, char side){
+		this.side=side;
+		this.position=position;
+		finish=false;
 	}
 	
-	public DriveToScale()
-	{
-		position = 0;
-		side = 'L';
-	}
-
-	// Called just before this Command runs the first time
 	@Override
-	protected void initialize()
-	{
-		
-	}
-
-	// Called repeatedly when this Command is scheduled to run
-	@Override
-	protected void execute()
-	{
-		if (side == 'L')
-		{
-			if (position == 1)
-			{
-
+	protected void execute(){
+		Robot.drivetrain.drive(0, 1, 0);
+		Timer.delay(0);//TODO: find timer from baseline to switch
+		Robot.drivetrain.stop();
+		if(position==1){
+			Robot.drivetrain.drive(1, 0, 0);
+			if(side=='L'){
+				Timer.delay(0); //TODO: measure strafe time from boundary to left plate
 			}
-			else if (position == 2)
-			{
-
+			else if(side=='R'){
+				Timer.delay(0); //TODO: measure strafe time from boundary to right plate
 			}
-			else if (position == 3)
-			{
-
-			}
+			Robot.drivetrain.stop();
 		}
-		else if (side == 'R')
-		{
-			if (position == 1)
-			{
-
+		else if(position==3){
+			Robot.drivetrain.drive(-1, 0, 0);
+			if(side=='R'){
+				Timer.delay(0); //TODO: measure strafe time from boundary to right plate
 			}
-			else if (position == 2)
-			{
-
+			else if(side=='L'){
+				Timer.delay(0); //TODO: measure strafe time from boundary to Left plate
 			}
-			else if (position == 3)
-			{
-
-			}
+			Robot.drivetrain.stop();
 		}
+		finish=true;
+	}
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return finish;
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished()
-	{
-		return false;
-	}
-
-	// Called once after isFinished returns true
-	@Override
-	protected void end()
-	{
-		
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted()
-	{
-		
-	}
 }
-

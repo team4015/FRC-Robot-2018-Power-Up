@@ -18,15 +18,15 @@ public class MoveWrist extends Command
 	public MoveWrist()
 	{
 		requires(Robot.winch);
-		topSwitch = new DigitalInput(1);
-		bottomSwitch = new DigitalInput(2);
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize()
 	{
-
+		topSwitch=Robot.topSwitch;
+		bottomSwitch=Robot.bottomSwitch;
 	}
 	
 	// Called repeatedly when this Command is scheduled to run

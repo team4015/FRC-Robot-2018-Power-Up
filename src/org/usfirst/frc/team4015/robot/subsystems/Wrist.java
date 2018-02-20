@@ -1,10 +1,10 @@
 package org.usfirst.frc.team4015.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
-
+import edu.wpi.first.wpilibj.Talon;
 import org.usfirst.frc.team4015.robot.RobotMap;
-
+import org.usfirst.frc.team4015.robot.commands.MoveWrist;
 /* ===================================================
  * This class controls the wrist.  The wrist uses a 
  * windshield wiper motor controlled by a Talon SRX.
@@ -12,37 +12,40 @@ import org.usfirst.frc.team4015.robot.RobotMap;
 
 public class Wrist extends Subsystem
 {
-	PWMTalonSRX wristMotor;
+	// Talons here
+	Talon talon;
 	
 	public Wrist()
 	{
-		wristMotor = new PWMTalonSRX(RobotMap.wristMotor);
+		talon = new Talon(RobotMap.wristMotor); 
 	}
 	
 	// MOVE WRIST UP //
 	
-	public void moveUp()
+	public void up()
 	{
-		wristMotor.set(1.0);
+		talon.set(1.0);
 	}
 	
 	// MOVE WRIST DOWN //
 	
-	public void moveDown()
+	public void down()
 	{
-		wristMotor.set(-1.0);
+		
+		talon.set(1.0);
+		
 	}
 	
 	// STOP WRIST //
 	
 	public void stop()
 	{
-		wristMotor.set(0);
+		talon.set(0);
 	}
 
 	public void initDefaultCommand()
 	{
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MoveWrist());
+		 setDefaultCommand(new MoveWrist());
 	}
 }
