@@ -18,7 +18,7 @@ public class DriveToBaseLine extends Command
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain);
 		
-		this.position = position;
+		this.position = position;//-1 to switch 1 to scale
 	}
 
 	// Called just before this Command runs the first time
