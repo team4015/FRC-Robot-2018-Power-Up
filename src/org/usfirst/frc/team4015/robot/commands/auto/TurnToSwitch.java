@@ -16,6 +16,14 @@ public class TurnToSwitch extends Command {
 	}
 	@Override
 	protected void execute() {
+		Robot.arm.up();
+		if(position==-1) {
+		Timer.delay(0);//TODO: ROBOGT ARM UP TIME to switch
+		}
+		else if(position==1) {
+			Timer.delay(0);//TODO: ROBOT ARM UP TIME TO SCALE
+		}
+		Robot.arm.stop();
 		if (turn==-1)
 			Robot.drivetrain.drive(0, 0, -1);
 		else if(turn==-1) {
