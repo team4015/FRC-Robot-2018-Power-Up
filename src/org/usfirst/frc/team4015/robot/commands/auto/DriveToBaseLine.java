@@ -3,6 +3,7 @@ package org.usfirst.frc.team4015.robot.commands.auto;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
+
 /* ===================================================
  * This command drives the robot in a straight line
  * to the baseline in the autonomous period.
@@ -18,8 +19,8 @@ public class DriveToBaseLine extends Command
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain);
 		
-		this.position = position;//-1 to switch 1 to scale
-		finish=false;
+		this.position = position; //-1 to switch 1 to scale
+		finish = false;
 	}
 
 	// Called just before this Command runs the first time
@@ -33,7 +34,6 @@ public class DriveToBaseLine extends Command
 	@Override
 	protected void execute()
 	{
-	
 		Robot.drivetrain.drive(0, 1, 0);
 		int seconds=0;
 		if(position==1) {

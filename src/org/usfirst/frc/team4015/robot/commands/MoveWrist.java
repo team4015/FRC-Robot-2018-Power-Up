@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4015.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4015.robot.OI;
 import org.usfirst.frc.team4015.robot.Robot;
@@ -11,36 +10,34 @@ import org.usfirst.frc.team4015.robot.Robot;
  * =================================================*/
 
 public class MoveWrist extends Command
-{
-	DigitalInput topSwitch;
-	DigitalInput bottomSwitch;
-	
+{	
 	public MoveWrist()
 	{
-		requires(Robot.winch);
-		
+		requires(Robot.wrist);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize()
 	{
-		topSwitch=Robot.topSwitch;
-		bottomSwitch=Robot.bottomSwitch;
+		
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute()
 	{
-		if (OI.rightStick.getRawButtonPressed(1)){
-			Robot.wrist.moveUp();
+		if (OI.rightStick.getRawButtonPressed(1))
+		{
+			Robot.wrist.up();
 		}
-		else if(OI.rightStick.getRawButtonPressed(2)){
-			Robot.wrist.moveDown();
+		else if (OI.rightStick.getRawButtonPressed(2))
+		{
+			Robot.wrist.down();
 		}
 		
-		if (!((topSwitch.get() && OI.rightStick.getRawButtonPressed(1))||(bottomSwitch.get() && OI.rightStick.getRawButtonPressed(2)))) {
+		if (!((Robot.wrist.getTopSwitch() && OI.rightStick.getRawButtonPressed(1))||(Robot.wrist.getBottomSwitch() && OI.rightStick.getRawButtonPressed(2))))
+		{
 			Timer.delay(2);
 		}
 		else
@@ -48,6 +45,18 @@ public class MoveWrist extends Command
 			Robot.wrist.stop();
 			Timer.delay(2);
 		}
+		
+		// ALT?? 
+		/*
+		if (OI.rightStick.getRawButton(1) && !Robot.wrist.getTopSwitch())
+		{
+			Robot.wrist.up();
+		}
+		else if (OI.rightStick.getRawButton(2) && !Robot.wrist.getBottomSwitch())
+		{
+			Robot.wrist.down();
+		}
+		*/
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
@@ -61,7 +70,7 @@ public class MoveWrist extends Command
 	@Override
 	protected void end()
 	{
-		
+		Robot.wrist.stop();
 	}
 
 	// Called when another command which requires one or more of the same

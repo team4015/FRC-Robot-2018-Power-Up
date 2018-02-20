@@ -13,7 +13,6 @@ public class MoveClaw extends Command
 {
 	public MoveClaw()
 	{
-		// Use requires() here to declare subsystem dependencies
 		requires(Robot.claw);
 	}
 
@@ -21,7 +20,7 @@ public class MoveClaw extends Command
 	@Override
 	protected void initialize()
 	{
-		// Default / starting position
+		// Default starting position
 		Robot.claw.clawPiston.retract();
 	}
 

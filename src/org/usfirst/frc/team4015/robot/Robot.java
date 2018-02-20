@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 
 
@@ -17,9 +16,7 @@ import org.usfirst.frc.team4015.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4015.robot.subsystems.Claw;
 import org.usfirst.frc.team4015.robot.subsystems.Arm;
 import org.usfirst.frc.team4015.robot.subsystems.Wrist;
-import org.usfirst.frc.team4015.robot.subsystems.pneumaticsControl.Piston;
 import org.usfirst.frc.team4015.robot.subsystems.Winch;
-//import org.usfirst.frc.team4015.robot.subsystems.Intake;
 
 // ROBOT MODES (COMMAND GROUP) IMPORTS //
 
@@ -41,10 +38,6 @@ public class Robot extends IterativeRobot
 	public static Arm arm;
 	public static Wrist wrist;
 	public static Winch winch;
-	public static Piston p;
-	public static DigitalInput topSwitch;
-	public static DigitalInput bottomSwitch;
-	//public static Intake intake;
 
 	// DECLARE ROBOT MODES (COMMAND GROUPS) //
 	
@@ -63,25 +56,20 @@ public class Robot extends IterativeRobot
 	public void robotInit()
 	{
 		// SUBSYSTEM INSTANTIATION //
-		topSwitch = new DigitalInput(1);
-		bottomSwitch = new DigitalInput(2);
-		p = new Piston(1,2);
+		
 		drivetrain = new Drivetrain();
 		drivetrain.newMecanumDrive();
 		
 		pneumatics = new Pneumatics();
+		
 		claw = new Claw();
 		arm = new Arm();
 		wrist = new Wrist();
 		winch = new Winch();
-		//intake = new Intake();
-		
 		
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //
 		
 		teleop = new Teleop();
-
-		
 		//auto = new Auto();
 		
 		/*
@@ -177,30 +165,30 @@ public class Robot extends IterativeRobot
 				{
 					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 					{
-						auto = new Switch(1, 'L');
+						auto = new Scale(1, 'L');
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
 					{
-						auto = new Switch(2, 'L');
+						auto = new Scale(2, 'L');
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
 					{
-						auto = new Switch(3, 'L');
+						auto = new Scale(3, 'L');
 					}
 				}
 				else if (plateLocations.charAt(1) == 'R')
 				{
 					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 					{
-						auto = new Switch(1, 'R');
+						auto = new Scale(1, 'R');
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
 					{
-						auto = new Switch(2, 'R');
+						auto = new Scale(2, 'R');
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
 					{
-						auto = new Switch(3, 'R');
+						auto = new Scale(3, 'R');
 					}
 				}
 			}
@@ -219,14 +207,6 @@ public class Robot extends IterativeRobot
 			{
 				auto = new BaseLine(3);
 			}
-		}
-		else if (selectedAuto.substring(0, selectedAuto.length() + 1).equalsIgnoreCase("SpinToWin"))
-		{
-			auto = new AutoSpinToWin();
-		}
-		else
-		{
-			auto = new AutoSpinToWin();
 		}
 		
 		/*

@@ -1,13 +1,9 @@
-
-
 package org.usfirst.frc.team4015.robot.robotModes.auto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4015.robot.commands.auto.CubeScale;
 import org.usfirst.frc.team4015.robot.commands.auto.DriveToBaseLine;
 import org.usfirst.frc.team4015.robot.commands.auto.DriveToScale;
 import org.usfirst.frc.team4015.robot.commands.auto.DropBox;
-import org.usfirst.frc.team4015.robot.commands.auto.TurnToSwitch;
 
 
 public class Scale extends CommandGroup

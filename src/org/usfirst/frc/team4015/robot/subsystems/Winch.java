@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4015.robot.subsystems;
 
 import org.usfirst.frc.team4015.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
