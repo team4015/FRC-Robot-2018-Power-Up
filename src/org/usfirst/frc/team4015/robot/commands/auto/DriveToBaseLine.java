@@ -12,13 +12,14 @@ import edu.wpi.first.wpilibj.Timer;
 public class DriveToBaseLine extends Command
 {
 	public int position;
-	
+	private boolean finish;
 	public DriveToBaseLine(int position)
 	{
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain);
 		
 		this.position = position;//-1 to switch 1 to scale
+		finish=false;
 	}
 
 	// Called just before this Command runs the first time
@@ -32,22 +33,7 @@ public class DriveToBaseLine extends Command
 	@Override
 	protected void execute()
 	{
-		/*if (position == 1)
-		{
-			
-		}
-		else if (position == 2)
-		{
-			
-		}
-		else if (position == 3)
-		{
-			
-		} 
-		else if (position == 0)
-		{ 
-			Robot.drivetrain.stop();
-		}*/
+	
 		Robot.drivetrain.drive(0, 1, 0);
 		int seconds=0;
 		if(position==1) {
@@ -58,13 +44,14 @@ public class DriveToBaseLine extends Command
 		}
 		Timer.delay(seconds);
 		Robot.drivetrain.stop();
+		finish=true;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished()
 	{
-		return false;
+		return finish;
 	}
 
 	// Called once after isFinished returns true

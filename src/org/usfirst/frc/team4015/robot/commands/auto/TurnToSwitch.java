@@ -7,12 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class TurnToSwitch extends Command {
 
-	int position;//-1: switch     1:Scale
-	int turn;// 1==right -1===left
+	private int position;//-1: switch     1:Scale
+	private int turn;// 1==right -1===left
+	private boolean finish;
 	
 	public TurnToSwitch(int pos, int turn) {
 		position=pos;
 		this.turn=turn;
+		finish=false;
 	}
 	@Override
 	protected void execute() {
@@ -46,7 +48,7 @@ public class TurnToSwitch extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return finish;
 	}
 
 }
