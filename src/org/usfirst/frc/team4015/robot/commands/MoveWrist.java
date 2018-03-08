@@ -27,32 +27,28 @@ public class MoveWrist extends Command
 	@Override
 	protected void execute()
 	{
-		if (OI.rightStick.getRawButtonPressed(1))
+		
+		if ((OI.leftStick.getRawButtonPressed(5) /*|| OI.operatorStick.getRawButton(6)*/) && !Robot.wrist.getTopSwitch())
 		{
 			Robot.wrist.up();
 		}
-		else if (OI.rightStick.getRawButtonPressed(2))
+		else if ((OI.leftStick.getRawButtonPressed(3) /*|| OI.operatorStick.getRawButton(7)*/) && !Robot.wrist.getBottomSwitch())
 		{
 			Robot.wrist.down();
-		}
-		
-		if (!((Robot.wrist.getTopSwitch() && OI.rightStick.getRawButtonPressed(1))||(Robot.wrist.getBottomSwitch() && OI.rightStick.getRawButtonPressed(2))))
-		{
-			Timer.delay(2);
 		}
 		else
 		{
 			Robot.wrist.stop();
-			Timer.delay(2);
 		}
 		
 		// ALT?? 
 		/*
-		if (OI.rightStick.getRawButton(1) && !Robot.wrist.getTopSwitch())
+		 * 
+		if ((OI.leftStick.getRawButtonPressed(5) || OI.operatorStick.getRawButton(6)) && !Robot.wrist.getTopSwitch())
 		{
 			Robot.wrist.up();
 		}
-		else if (OI.rightStick.getRawButton(2) && !Robot.wrist.getBottomSwitch())
+		else if ((OI.leftStick.getRawButtonPressed(3) || OI.operatorStick.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
 		{
 			Robot.wrist.down();
 		}

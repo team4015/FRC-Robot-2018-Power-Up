@@ -34,15 +34,9 @@ public class DriveToBaseLine extends Command
 	@Override
 	protected void execute()
 	{
-		Robot.drivetrain.drive(0, 1, 0);
-		int seconds=0;
-		if(position==1) {
-		seconds=0;//TODO: FILL IN SECoNdS to scale
-		}
-		else if(position==-1) {
-			seconds=0;//TODO: FILL IN SECoNdS to switch
-		}
-		Timer.delay(seconds);
+		Robot.drivetrain.chassis.driveCartesian(0, 1, 0);
+		
+		Timer.delay(2);
 		Robot.drivetrain.stop();
 		finish=true;
 	}

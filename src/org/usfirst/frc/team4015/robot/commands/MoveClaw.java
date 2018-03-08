@@ -28,7 +28,7 @@ public class MoveClaw extends Command
 	@Override
 	protected void execute()
 	{
-		if (OI.leftStick.getRawButton(4) == true)
+		if (OI.rightStick.getRawButton(1) /*|| OI.operatorStick.getRawButton(9)*/)
 		{
 			Robot.claw.clawPiston.toggle();
 			Timer.delay(1);

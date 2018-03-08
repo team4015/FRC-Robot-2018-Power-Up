@@ -36,7 +36,7 @@ public class ToggleCompressor extends Command
 	@Override
 	protected void execute()
 	{
-		if (OI.leftStick.getRawButton(9) == true)
+		if (OI.rightStick.getRawButton(12))
 		{
 			Robot.pneumatics.toggleCompressor();
 			Timer.delay(1);

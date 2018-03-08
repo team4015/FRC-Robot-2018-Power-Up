@@ -1,12 +1,15 @@
 package org.usfirst.frc.team4015.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.CameraServer;
 
 
 // SUBSYSTEM IMPORTS //
@@ -31,7 +34,7 @@ import org.usfirst.frc.team4015.robot.robotModes.auto.*;
 public class Robot extends IterativeRobot
 {
 	// SUBSYSTEM DECLARATION //
-	
+	public static SendableChooser autoChooser;
 	public static Drivetrain drivetrain;
 	public static Pneumatics pneumatics;
 	public static Claw claw;
@@ -51,12 +54,15 @@ public class Robot extends IterativeRobot
 	 * is first started up and should be
 	 * used for any initialization code.
 	 * ==================================*/
-	
+
 	@Override
 	public void robotInit()
 	{
 		// SUBSYSTEM INSTANTIATION //
-		
+		/*autoChooser=new SendableChooser();
+		autoChooser.addDefault("Switch", object);
+		autoChooser.addDefault("Baseline", object);*/
+		CameraServer.getInstance().startAutomaticCapture();
 		drivetrain = new Drivetrain();
 		drivetrain.newMecanumDrive();
 		
@@ -77,6 +83,10 @@ public class Robot extends IterativeRobot
 		chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		*/
+		
+		// CAMERA //
+		
+		
 	}
 
 	/* =================================================
@@ -115,29 +125,39 @@ public class Robot extends IterativeRobot
 	public void autonomousInit()
 	{
 		String plateLocations;
+		//SmartDashboard.putString("DB/String 0", "AutoSelector");
+		System.out.println("hiiiii");
 		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
                 
 		//autonomousCommand = chooser.getSelected();
 		
-		String selectedAuto = SmartDashboard.getString("Auto Selector", "BaseLine");
+		String selectedAuto = SmartDashboard.getString("DB/String 0", "baseline1");
+
+		System.out.println(selectedAuto.substring(0, selectedAuto.length()-1));
 		
-		if (selectedAuto.substring(0, selectedAuto.length()).equalsIgnoreCase("Switch"))
+		if (selectedAuto.substring(0, selectedAuto.length()-1).equalsIgnoreCase("Switch"))
 		{
+			System.out.println("hjedhu");
+			
 			if (plateLocations.length() > 0)
 			{
 				if (plateLocations.charAt(0) == 'L')
 				{
 					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 					{
+						
 						auto = new Switch(1, 'L');
+						System.out.println("Switch 1L ");
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
 					{
 						auto = new Switch(2, 'L');
+						System.out.println("Switch 2L");
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
 					{
 						auto = new Switch(3, 'L');
+						System.out.println("Switch 3L");
 					}
 				}
 				else if (plateLocations.charAt(0) == 'R')
@@ -145,14 +165,17 @@ public class Robot extends IterativeRobot
 					if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 					{
 						auto = new Switch(1, 'R');
+						System.out.println("Switch 1R");
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
 					{
 						auto = new Switch(2, 'R');
+						System.out.println("Switch 2R ");
 					}
 					else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
 					{
 						auto = new Switch(3, 'R');
+						System.out.println("Switch 3R");
 					}
 				}
 			}
@@ -193,21 +216,85 @@ public class Robot extends IterativeRobot
 				}
 			}
 		}
-		else if (selectedAuto.substring(0, selectedAuto.length()).equalsIgnoreCase("BaseLine"))
+		else if (selectedAuto.substring(0, selectedAuto.length()-1).equalsIgnoreCase("BaseLine"))
 		{
-			if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
+		
+			/*if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 			{
-				auto = new BaseLine(1);
+				long startTime = System.nanoTime();
+				while((System.nanoTime() - startTime)<2000000000) {
+					
+					System.out.println("3b");
+					//auto = new BaseLine(1);
+					
+					Robot.drivetrain.chassis.driveCartesian(0.5, 0, 0);
+				
+					}
+				Robot.drivetrain.chassis.stopMotor();
+				
 			}
 			else if (selectedAuto.charAt(selectedAuto.length() - 1) == '2')
 			{
-				auto = new BaseLine(2);
+				/*while((double)(System.nanoTime() - startTime)<8000000000.0) {
+					
+					System.out.println("3b");
+					//auto = new BaseLine(1);
+					
+					//Robot.drivetrain.chassis.driveCartesian(0.5, 0, 0);
+				
+					}
+				while((double)(System.nanoTime() - startTime)<3000000000.0) {
+					
+					System.out.println("3b");
+					//auto = new BaseLine(1);
+					
+					Robot.drivetrain.chassis.driveCartesian(0, 0.5, 0);
+				
+					}
+				while((System.nanoTime() - startTime)<2000000000) {
+					
+					System.out.println("3b");
+					//auto = new BaseLine(1);
+					
+					Robot.drivetrain.chassis.driveCartesian(0.5, 0, 0);
+				
+					}
+				
 			}
 			else if (selectedAuto.charAt(selectedAuto.length() - 1) == '3')
 			{
-				auto = new BaseLine(3);
-			}
+				System.out.println("3b");
+				//auto = new BaseLine(3);
+				long startTime = System.nanoTime();
+				while((System.nanoTime() - startTime)<2000000000) {
+					
+					System.out.println("3b");
+					//auto = new BaseLine(1);
+					
+					Robot.drivetrain.chassis.driveCartesian(0.5, 0, 0);
+				
+					}
+				Robot.drivetrain.chassis.stopMotor();
+			}*/
+			System.out.println("3b");
+			//auto = new BaseLine(3);
+			long startTime = System.nanoTime();
+			while((System.nanoTime() - startTime)<2000000000) {
+				
+				System.out.println("3b");
+				//auto = new BaseLine(1);
+				
+				Robot.drivetrain.drive(0, 0.5, 0);
+			
+				}
+			Robot.drivetrain.chassis.stopMotor();
 		}
+		/*this.drivetrain.frontLeft.set(1);
+		this.drivetrain.backLeft.set(-1);
+		this.drivetrain.frontRight.set(-1);
+		this.drivetrain.backRight.set(1);*/
+		
+		
 		
 		/*
 		 switch (selectedAuto)
@@ -281,8 +368,7 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousPeriodic()
 	{
-		// Run Scheduler to manage Commands / CommandGroups
-		Scheduler.getInstance().run();
+		
 	}
 
 	@Override

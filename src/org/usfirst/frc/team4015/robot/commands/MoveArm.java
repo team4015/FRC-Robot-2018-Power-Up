@@ -1,5 +1,7 @@
-package org.usfirst.frc.team4015.robot.commands;
+	package org.usfirst.frc.team4015.robot.commands;
 
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
 import org.usfirst.frc.team4015.robot.OI;
@@ -10,16 +12,25 @@ import org.usfirst.frc.team4015.robot.OI;
 
 public class MoveArm extends Command
 {
+
+	
 	public MoveArm()
 	{
 		requires(Robot.arm);
+	
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize()
 	{
+		/*m
 		Robot.arm.stop();
+		Timer.delay(1);
+		Robot.arm.move(-0.5);
+		Timer.delay(1);
+		Robot.arm.stop();
+		*/
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -27,21 +38,20 @@ public class MoveArm extends Command
 	protected void execute()
 	{
 		// MOVE ARM UP //
-		System.out.println(OI.rightStick.getRawButton(3));
+		System.out.println(OI.rightStick.getRawButton(6));
 		
-		if (OI.rightStick.getRawButton(3))
+	/*	if (OI.rightStick.getRawButton(6)/*&&!(Robot.arm.getTopSwitch())) /*|| OI.operatorStick.getRawButton(11)
 		{
+			System.out.println("eiupiew");
+			Robot.arm.up();
+		}*/
+		System.out.println(Robot.arm.getTopSwitch());
+		System.out.println(Robot.arm.getBottomSwitch());
+		if(OI.rightStick.getRawButton(6)) {
+			
 			Robot.arm.up();
 		}
-		else
-		{
-			Robot.arm.stop();
-		}
-		
-		// MOVE ARM DOWN //
-		System.out.println(OI.rightStick.getRawButton(4));
-		
-		if (OI.rightStick.getRawButton(4))
+		else if (OI.rightStick.getRawButton(4))/* || OI.operatorStick.getRawButton(10)*/
 		{
 			Robot.arm.down();
 		}

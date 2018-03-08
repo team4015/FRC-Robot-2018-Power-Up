@@ -15,12 +15,15 @@ public class Drive extends Command
 	public Drive()
 	{
 		requires(Robot.drivetrain);
+		
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize()
 	{
+		
 		
 	}
 
@@ -29,7 +32,8 @@ public class Drive extends Command
 	protected void execute()
 	{
 		// DUAL STICK //
-		 Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.leftStick.getY()), OI.rightStick.getZ());
+	
+		 Robot.drivetrain.drive(OI.rightStick.X(), (-1*OI.leftStick.Y()), OI.rightStick.Z());
 		
 		// SINGLE STICK //
 		// Robot.drivetrain.drive(OI.rightStick.getX(), (-1*OI.rightStick.getY()), OI.rightStick.getZ());

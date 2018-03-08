@@ -7,7 +7,7 @@ import org.usfirst.frc.team4015.robot.RobotMap;
  * This class stores the objects that are used to interface with the joysticks
  * and controllers used for controlling the robot.
  * ============================================================================*/
-public class OI
+public class OI 
 {	
 	/* left stick buttons:
 	 * 		5 - winch up
@@ -18,7 +18,9 @@ public class OI
 	 * 		3 - arm up
 	 * 		4 - arm down
 	 */
-	public static Joystick leftStick = new Joystick(RobotMap.leftStickPort);
-	public static Joystick rightStick = new Joystick(RobotMap.rightStickPort);
-	public static Joystick gamepad = new Joystick(RobotMap.gamepadPort);
+	public static JoystickDeadzone leftStick = new JoystickDeadzone(RobotMap.leftStickPort);
+	public static JoystickDeadzone rightStick = new JoystickDeadzone(RobotMap.rightStickPort);
+	public static JoystickDeadzone operatorStick = new JoystickDeadzone(RobotMap.gamepadPort);
+
+	
 }
