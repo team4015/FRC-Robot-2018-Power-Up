@@ -20,7 +20,7 @@ public class OI
 	 */
 	public static JoystickDeadzone leftStick = new JoystickDeadzone(RobotMap.leftStickPort);
 	public static JoystickDeadzone rightStick = new JoystickDeadzone(RobotMap.rightStickPort);
-	public static JoystickDeadzone operatorStick = new JoystickDeadzone(RobotMap.gamepadPort);
+	public static JoystickDeadzone gamepad = new JoystickDeadzone(RobotMap.gamepadPort);
 
 	
 }

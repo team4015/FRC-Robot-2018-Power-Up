@@ -40,7 +40,7 @@ public class MoveArm extends Command
 		// MOVE ARM UP //
 		System.out.println(OI.rightStick.getRawButton(6));
 		
-	/*	if (OI.rightStick.getRawButton(6)/*&&!(Robot.arm.getTopSwitch())) /*|| OI.operatorStick.getRawButton(11)
+	/*	if (OI.rightStick.getRawButton(6)/*&&!(Robot.arm.getTopSwitch())) /*|| OI.gamepad.getRawButton(11)
 		{
 			System.out.println("eiupiew");
 			Robot.arm.up();
@@ -51,7 +51,7 @@ public class MoveArm extends Command
 			
 			Robot.arm.up();
 		}
-		else if (OI.rightStick.getRawButton(4))/* || OI.operatorStick.getRawButton(10)*/
+		else if (OI.rightStick.getRawButton(4))/* || OI.gamepad.getRawButton(10)*/
 		{
 			Robot.arm.down();
 		}
