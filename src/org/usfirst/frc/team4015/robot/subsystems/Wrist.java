@@ -19,22 +19,22 @@ public class Wrist extends Subsystem
 	public Wrist()
 	{
 		wristMotor = new PWMTalonSRX(RobotMap.wristMotor);
-		topSwitch = new DigitalInput(1);
-		bottomSwitch = new DigitalInput(2);
-	}
-	
-	// MOVE WRIST UP //
-	
-	public void up()
-	{
-		wristMotor.set(1.0);
+		topSwitch = new DigitalInput(7);
+		bottomSwitch = new DigitalInput(8);
 	}
 	
 	// MOVE WRIST DOWN //
 	
 	public void down()
 	{
-		wristMotor.set(1.0);
+		wristMotor.set(0.5);
+	}
+	
+	// MOVE WRIST UP //
+	
+	public void up()
+	{
+		wristMotor.set(-1);
 	}
 	
 	// STOP WRIST //

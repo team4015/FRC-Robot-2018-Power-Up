@@ -17,6 +17,7 @@ public class BaseLine extends CommandGroup
 	{
 		if (position==1||position==3)
 		{
+			System.out.println("bline");
 			addSequential(new DriveToBaseLine(position));
 		}
 		else
