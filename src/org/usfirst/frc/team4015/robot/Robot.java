@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 
 
@@ -41,7 +42,8 @@ public class Robot extends IterativeRobot
 	public static Arm arm;
 	public static Wrist wrist;
 	public static Winch winch;
-
+	//public static Gyro gyro;
+	
 	// DECLARE ROBOT MODES (COMMAND GROUPS) //
 	
 	Command teleop;
@@ -72,7 +74,7 @@ public class Robot extends IterativeRobot
 		arm = new Arm();
 		wrist = new Wrist();
 		winch = new Winch();
-		
+		//gyro=new AnalogGyro();
 		// INSTANTIATE ROBOT MODES (COMMAND GROUPS) //
 		
 		teleop = new Teleop();

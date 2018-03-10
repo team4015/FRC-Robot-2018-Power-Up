@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4015.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+
 import org.usfirst.frc.team4015.robot.RobotMap;
 
 /* =============================================================================
@@ -20,7 +22,7 @@ public class OI
 	 */
 	public static JoystickDeadzone leftStick = new JoystickDeadzone(RobotMap.leftStickPort);
 	public static JoystickDeadzone rightStick = new JoystickDeadzone(RobotMap.rightStickPort);
-	public static JoystickDeadzone gamepad = new JoystickDeadzone(RobotMap.gamepadPort);
+	public static XboxController gamepad = new XboxController(RobotMap.gamepadPort);
 
 	
 }

@@ -1,6 +1,7 @@
 	package org.usfirst.frc.team4015.robot.commands;
 
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.Robot;
@@ -47,16 +48,26 @@ public class MoveArm extends Command
 		}*/
 		System.out.println(Robot.arm.getTopSwitch());
 		System.out.println(Robot.arm.getBottomSwitch());
-		if(OI.rightStick.getRawButton(6)) {
+		/*if(OI.rightStick.getRawButton(6)) {
 			
 			Robot.arm.up();
 		}
-		else if (OI.rightStick.getRawButton(4))/* || OI.gamepad.getRawButton(10)*/
+		else if (OI.rightStick.getRawButton(4))
 		{
 			Robot.arm.down();
 		}
 		else
 		{
+			Robot.arm.stop();
+		}*/
+		if(OI.gamepad.getY(Hand.kLeft)>0.5) {
+			System.out.println("heuw");
+			Robot.arm.up();
+		}
+		else if(OI.gamepad.getY(Hand.kLeft)<-0.5) {
+			Robot.arm.down();
+		}
+		else {
 			Robot.arm.stop();
 		}
 	}
