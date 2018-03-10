@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4015.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4015.robot.OI;
@@ -28,7 +29,7 @@ public class MoveClaw extends Command
 	@Override
 	protected void execute()
 	{
-		if (OI.rightStick.getRawButton(1) /*|| OI.gamepad.getRawButton(9)*/)
+		if (/*OI.rightStick.getRawButton(1) || */ OI.gamepad.getBumper(Hand.kRight))
 		{
 			Robot.claw.clawPiston.toggle();
 			Timer.delay(1);

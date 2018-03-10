@@ -2,6 +2,8 @@ package org.usfirst.frc.team4015.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+
 import org.usfirst.frc.team4015.robot.OI;
 import org.usfirst.frc.team4015.robot.Robot;
 
@@ -28,11 +30,37 @@ public class MoveWrist extends Command
 	protected void execute()
 	{
 		
-		if ((OI.leftStick.getRawButtonPressed(5) /*|| OI.gamepad.getRawButton(6)*/) && !Robot.wrist.getTopSwitch())
+		/*if ((OI.leftStick.getRawButtonPressed(3) /*|| OI.gamepad.getRawButton(6)) && !Robot.wrist.getTopSwitch())
 		{
 			Robot.wrist.up();
 		}
-		else if ((OI.leftStick.getRawButtonPressed(3) /*|| OI.gamepad.getRawButton(7)*/) && !Robot.wrist.getBottomSwitch())
+		else if ((OI.leftStick.getRawButtonPressed(5) /*|| OI.gamepad.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
+		{
+			Robot.wrist.down();
+		}
+		else
+		{
+			Robot.wrist.stop();
+		}*/
+		
+		// ALT?? 
+		/*
+		 * 
+		if ((OI.leftStick.getRawButtonPressed(3) || OI.operatorStick.getRawButton(6)) && !Robot.wrist.getTopSwitch())
+		{
+			Robot.wrist.up();
+		}
+		else if ((OI.leftStick.getRawButtonPressed(5) || OI.operatorStick.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
+		{
+			Robot.wrist.down();
+		}
+		*/
+		
+		if ((OI.gamepad.getY(Hand.kRight) > 0.5 /* || OI.leftStick.getRawButtonPressed(3)*/) && !Robot.wrist.getTopSwitch())
+		{
+			Robot.wrist.up();
+		}
+		else if ((OI.gamepad.getY(Hand.kRight) < -0.5 /* || OI.leftStick.getRawButtonPressed(5)*/) && !Robot.wrist.getBottomSwitch())
 		{
 			Robot.wrist.down();
 		}
@@ -40,19 +68,6 @@ public class MoveWrist extends Command
 		{
 			Robot.wrist.stop();
 		}
-		
-		// ALT?? 
-		/*
-		 * 
-		if ((OI.leftStick.getRawButtonPressed(5) || OI.operatorStick.getRawButton(6)) && !Robot.wrist.getTopSwitch())
-		{
-			Robot.wrist.up();
-		}
-		else if ((OI.leftStick.getRawButtonPressed(3) || OI.operatorStick.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
-		{
-			Robot.wrist.down();
-		}
-		*/
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

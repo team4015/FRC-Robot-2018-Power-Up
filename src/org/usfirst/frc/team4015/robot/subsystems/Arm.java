@@ -16,15 +16,15 @@ public class Arm extends Subsystem
 {
 	public PWMTalonSRX armMotors;
 	//public Piston p;
-	static DigitalInput topSwitch;
-	static DigitalInput bottomSwitch;
+	//private DigitalInput topSwitch;
+	//private DigitalInput bottomSwitch;
 	
 	public Arm()
 	{
 		armMotors = new PWMTalonSRX(RobotMap.armMotors);
 		//p = new Piston(4,5);
-		topSwitch = new DigitalInput(5);
-		bottomSwitch = new DigitalInput(6);
+		//topSwitch = new DigitalInput(5);
+		//bottomSwitch = new DigitalInput(6);
 	}
 	
 	// MOVE ARM UP //
@@ -32,7 +32,7 @@ public class Arm extends Subsystem
 	public void up()
 	{
 		//p.retract();
-		System.out.println("arm up");
+		System.out.println("Arm UP");
 		armMotors.set(-0.5);
 	}
 	
@@ -48,6 +48,7 @@ public class Arm extends Subsystem
 	public void down()
 	{
 		//p.retract();
+		System.out.println("Arm DOWN");
 		armMotors.set(0.3);
 	}
 	
@@ -58,9 +59,11 @@ public class Arm extends Subsystem
 		armMotors.set(0);
 		//p.extend();
 	}
-
+	
+	/*
+	
 	// GET TOP SWITCH VALUE //
-
+	
 	public boolean getTopSwitch()
 	{
 		return topSwitch.get();
@@ -72,7 +75,9 @@ public class Arm extends Subsystem
 	{
 		return bottomSwitch.get();
 	}
-
+	
+	*/
+	
 	public void initDefaultCommand()
 	{
 		// Set the default command for a subsystem here.
