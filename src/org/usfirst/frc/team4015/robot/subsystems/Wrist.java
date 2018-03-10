@@ -3,6 +3,8 @@ package org.usfirst.frc.team4015.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
+
+import org.usfirst.frc.team4015.robot.Robot;
 import org.usfirst.frc.team4015.robot.RobotMap;
 
 /* ===================================================
@@ -27,14 +29,20 @@ public class Wrist extends Subsystem
 	
 	public void down()
 	{
-		wristMotor.set(0.5);
+		if (!getBottomSwitch())
+		{
+			wristMotor.set(0.5);
+		}
 	}
 	
 	// MOVE WRIST UP //
 	
 	public void up()
 	{
-		wristMotor.set(-1);
+		if (!getTopSwitch())
+		{
+			wristMotor.set(-1);
+		}
 	}
 	
 	// STOP WRIST //

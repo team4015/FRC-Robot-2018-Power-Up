@@ -15,14 +15,14 @@ import edu.wpi.first.wpilibj.PWMTalonSRX;
 public class Arm extends Subsystem
 {
 	public PWMTalonSRX armMotors;
-	//public Piston p;
+	//public Piston stopper;
 	//private DigitalInput topSwitch;
 	//private DigitalInput bottomSwitch;
 	
 	public Arm()
 	{
 		armMotors = new PWMTalonSRX(RobotMap.armMotors);
-		//p = new Piston(4,5);
+		//stopper = new Piston(4,5);
 		//topSwitch = new DigitalInput(5);
 		//bottomSwitch = new DigitalInput(6);
 	}
@@ -31,7 +31,7 @@ public class Arm extends Subsystem
 	
 	public void up()
 	{
-		//p.retract();
+		//stopper.retract();
 		System.out.println("Arm UP");
 		armMotors.set(-0.5);
 	}
@@ -47,7 +47,7 @@ public class Arm extends Subsystem
 	
 	public void down()
 	{
-		//p.retract();
+		//stopper.retract();
 		System.out.println("Arm DOWN");
 		armMotors.set(0.3);
 	}
@@ -57,7 +57,7 @@ public class Arm extends Subsystem
 	public void stop()
 	{
 		armMotors.set(0);
-		//p.extend();
+		//stopper.extend();
 	}
 	
 	/*
