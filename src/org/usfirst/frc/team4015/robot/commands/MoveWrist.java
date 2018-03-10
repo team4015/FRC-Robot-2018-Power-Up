@@ -30,11 +30,11 @@ public class MoveWrist extends Command
 	protected void execute()
 	{
 		
-		/*if ((OI.leftStick.getRawButtonPressed(5) /*|| OI.gamepad.getRawButton(6)) && !Robot.wrist.getTopSwitch())
+		/*if ((OI.leftStick.getRawButtonPressed(3) /*|| OI.gamepad.getRawButton(6)) && !Robot.wrist.getTopSwitch())
 		{
 			Robot.wrist.up();
 		}
-		else if ((OI.leftStick.getRawButtonPressed(3) /*|| OI.gamepad.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
+		else if ((OI.leftStick.getRawButtonPressed(5) /*|| OI.gamepad.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
 		{
 			Robot.wrist.down();
 		}
@@ -46,22 +46,26 @@ public class MoveWrist extends Command
 		// ALT?? 
 		/*
 		 * 
-		if ((OI.leftStick.getRawButtonPressed(5) || OI.operatorStick.getRawButton(6)) && !Robot.wrist.getTopSwitch())
+		if ((OI.leftStick.getRawButtonPressed(3) || OI.operatorStick.getRawButton(6)) && !Robot.wrist.getTopSwitch())
 		{
 			Robot.wrist.up();
 		}
-		else if ((OI.leftStick.getRawButtonPressed(3) || OI.operatorStick.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
+		else if ((OI.leftStick.getRawButtonPressed(5) || OI.operatorStick.getRawButton(7)) && !Robot.wrist.getBottomSwitch())
 		{
 			Robot.wrist.down();
 		}
 		*/
-		if(OI.gamepad.getY(Hand.kRight)>0.5) {
+		
+		if ((OI.gamepad.getY(Hand.kRight) > 0.5 /* || OI.leftStick.getRawButtonPressed(3)*/) && !Robot.wrist.getTopSwitch())
+		{
 			Robot.wrist.up();
 		}
-		else if(OI.gamepad.getY(Hand.kRight)<-0.5) {
+		else if ((OI.gamepad.getY(Hand.kRight) < -0.5 /* || OI.leftStick.getRawButtonPressed(5)*/) && !Robot.wrist.getBottomSwitch())
+		{
 			Robot.wrist.down();
 		}
-		else {
+		else
+		{
 			Robot.wrist.stop();
 		}
 	}

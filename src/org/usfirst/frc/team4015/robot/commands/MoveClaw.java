@@ -29,7 +29,7 @@ public class MoveClaw extends Command
 	@Override
 	protected void execute()
 	{
-		if (/*OI.rightStick.getRawButton(1)*/ OI.gamepad.getBumper(Hand.kRight))
+		if (/*OI.rightStick.getRawButton(1) || */ OI.gamepad.getBumper(Hand.kRight))
 		{
 			Robot.claw.clawPiston.toggle();
 			Timer.delay(1);

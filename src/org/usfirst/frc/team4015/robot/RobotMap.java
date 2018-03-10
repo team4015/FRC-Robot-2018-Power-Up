@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4015.robot;
 
-import org.usfirst.frc.team4015.robot.RobotMap;
-
 /* =============================================================================
  * This class stores the port numbers that the robot hardware is attached to.
  * ============================================================================*/

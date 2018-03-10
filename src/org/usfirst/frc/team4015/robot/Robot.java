@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -35,7 +34,7 @@ import org.usfirst.frc.team4015.robot.robotModes.auto.*;
 public class Robot extends IterativeRobot
 {
 	// SUBSYSTEM DECLARATION //
-	public static SendableChooser autoChooser;
+	//public static SendableChooser autoChooser;
 	public static Drivetrain drivetrain;
 	public static Pneumatics pneumatics;
 	public static Claw claw;
@@ -64,6 +63,7 @@ public class Robot extends IterativeRobot
 		/*autoChooser=new SendableChooser();
 		autoChooser.addDefault("Switch", object);
 		autoChooser.addDefault("Baseline", object);*/
+		
 		CameraServer.getInstance().startAutomaticCapture();
 		drivetrain = new Drivetrain();
 		drivetrain.newMecanumDrive();
@@ -85,10 +85,6 @@ public class Robot extends IterativeRobot
 		chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		*/
-		
-		// CAMERA //
-		
-		
 	}
 
 	/* =================================================
@@ -128,7 +124,6 @@ public class Robot extends IterativeRobot
 	{
 		String plateLocations;
 		//SmartDashboard.putString("DB/String 0", "AutoSelector");
-		System.out.println("hiiiii");
 		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
                 
 		//autonomousCommand = chooser.getSelected();
@@ -138,9 +133,7 @@ public class Robot extends IterativeRobot
 		System.out.println(selectedAuto.substring(0, selectedAuto.length()-1));
 		
 		if (selectedAuto.substring(0, selectedAuto.length()-1).equalsIgnoreCase("Switch"))
-		{
-			System.out.println("hjedhu");
-			
+		{	
 			if (plateLocations.length() > 0)
 			{
 				if (plateLocations.charAt(0) == 'L')
