@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot
 		autoChooser.addDefault("Switch", object);
 		autoChooser.addDefault("Baseline", object);*/
 		
-		CameraServer.getInstance().startAutomaticCapture();
+		
 		drivetrain = new Drivetrain();
 		drivetrain.newMecanumDrive();
 		
@@ -79,7 +79,8 @@ public class Robot extends IterativeRobot
 		
 		teleop = new Teleop();
 		//auto = new Auto();
-		
+		CameraServer.getInstance().startAutomaticCapture();
+		claw.clawPiston.retract();
 		/*
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		chooser.addObject("My Auto", new MyAutoCommand());
@@ -122,7 +123,7 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
-		String plateLocations;
+		/*String plateLocations;
 		//SmartDashboard.putString("DB/String 0", "AutoSelector");
 		plateLocations = DriverStation.getInstance().getGameSpecificMessage();
                 
@@ -211,8 +212,9 @@ public class Robot extends IterativeRobot
 				}
 			}
 		}
-		else if (selectedAuto.substring(0, selectedAuto.length()-1).equalsIgnoreCase("BaseLine"))
-		{
+		*/
+		//else if (selectedAuto.substring(0, selectedAuto.length()-1).equalsIgnoreCase("BaseLine"))
+		//{
 		
 			/*if (selectedAuto.charAt(selectedAuto.length() - 1) == '1')
 			{
@@ -280,10 +282,21 @@ public class Robot extends IterativeRobot
 				//auto = new BaseLine(1);
 				
 				Robot.drivetrain.drive(0, 0.5, 0);
-			
+				/*if((System.nanoTime() - startTime)<=1500000000) {
+					arm.up();
+				}*/
+			}
+				/*startTime = System.nanoTime();
+				
+			while((System.nanoTime() - startTime)<500000000) {
+				
+				wrist.down();
 				}
+				wrist.stop();
+			arm.stop();
+			claw.clawPiston.extend();*/
 			Robot.drivetrain.chassis.stopMotor();
-		}
+		//}
 		/*this.drivetrain.frontLeft.set(1);
 		this.drivetrain.backLeft.set(-1);
 		this.drivetrain.frontRight.set(-1);
@@ -363,7 +376,7 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousPeriodic()
 	{
-		
+		Scheduler.getInstance().run();
 	}
 
 	@Override

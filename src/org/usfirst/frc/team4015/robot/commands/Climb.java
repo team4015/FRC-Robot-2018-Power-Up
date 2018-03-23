@@ -27,7 +27,7 @@ public class Climb extends Command
 	@Override
 	protected void execute()
 	{
-		if (/*OI.leftStick.getRawButton(7) ||*/ OI.gamepad.getAButton())
+		if (OI.leftStick.getRawButton(7) || OI.gamepad.getAButton())
 		{
 			Robot.winch.spin();
 		}

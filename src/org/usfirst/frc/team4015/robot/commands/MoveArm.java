@@ -55,13 +55,13 @@ public class MoveArm extends Command
 		 * }
 		 */
 		
-		if (OI.gamepad.getY(Hand.kLeft) > 0.5 /*|| OI.rightStick.getRawButton(6)*/)
-		{
-			Robot.arm.up();
-		} 
-		else if (OI.gamepad.getY(Hand.kLeft) < -0.5 /*|| OI.rightStick.getRawButton(4)*/)
+		if (OI.gamepad.getY(Hand.kLeft) > 0.5 || OI.rightStick.getRawButton(6))
 		{
 			Robot.arm.down();
+		} 
+		else if (OI.gamepad.getY(Hand.kLeft) < -0.5 || OI.rightStick.getRawButton(4))
+		{
+			Robot.arm.up();
 		}
 		else
 		{

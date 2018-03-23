@@ -56,18 +56,22 @@ public class MoveWrist extends Command
 		}
 		*/
 		
-		if (OI.gamepad.getY(Hand.kRight) > 0.5 /* || OI.leftStick.getRawButtonPressed(3)*/)
-		{
-			Robot.wrist.up();
-		}
-		else if (OI.gamepad.getY(Hand.kRight) < -0.5 /* || OI.leftStick.getRawButtonPressed(5)*/)
+		
+		if (OI.gamepad.getY(Hand.kRight) > 0.5 || OI.leftStick.getRawButtonPressed(3))
 		{
 			Robot.wrist.down();
+		}
+		else if (OI.gamepad.getY(Hand.kRight) < -0.5 || OI.leftStick.getRawButtonPressed(5))
+		{
+			Robot.wrist.up();
 		}
 		else
 		{
 			Robot.wrist.stop();
 		}
+		
+		
+		
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
